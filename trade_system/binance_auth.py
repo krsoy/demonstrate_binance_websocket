@@ -5,8 +5,9 @@ from urllib.parse import urlencode, quote
 
 import requests
 
-from Exchanges.utils import *
-from Exchanges.framework import *
+from utils import *
+from precision import *
+from account_info import Account
 import pandas as pd
 import re
 
@@ -14,7 +15,7 @@ import re
 class BinanceAuth(Account):
 
     def __init__(self, symbols, key=None, secret=None, proxy=False, http_proxy=None, port=None, log=None):
-        Account.__init__(self, exchange_name='binance', round_price=binance_rp, round_qty=float_qty,key=key,secret=secret)
+        Account.__init__(self, exchange_name='binance', round_price=None, round_qty=None,key=key,secret=secret)
         self.symbols = symbols
         self.logger = log
         self.unity_qty = lambda x, y: x
